@@ -6,22 +6,24 @@ using UnityEngine.UI;
 public class PlayerPOVcam : MonoBehaviour
 {
     // ================= Variables =================
-    public List<GameObject> Locations;
-    public bool Observing = false;
-    public bool ObservingPlayer = false;
-    public GameObject CurrentlyObserving;
-    public float MinObserveTime;
-    public float MaxObserveTime;
-    public float LookSpeed; // 0 - 1
+    [SerializeField] private List<GameObject> Locations;
+    [SerializeField] private bool Observing = false;
+    [SerializeField] private bool ObservingPlayer = false;
+    [SerializeField] private GameObject CurrentlyObserving;
+    [SerializeField] public float MinObserveTime;
+    [SerializeField] public float MaxObserveTime;
+    [SerializeField] private float LookSpeed; // 0 - 1
     private int nombre;
+
     [SerializeField] private float suspicion;
     [SerializeField] private float maxSuspicion;
     [SerializeField] private float suspicionGainRate;
 
     // ================= Refrences =================
     private GameplayManager GManager;
-    [SerializeField]
-    private Image susMeterImage;
+    [SerializeField] private Image susMeterImage;
+    [SerializeField] private GameObject Exclamation;
+    [SerializeField] private GameObject Question;
 
     // ================= Setup =================
     // Subscribe to player sabotage event
@@ -100,6 +102,7 @@ public class PlayerPOVcam : MonoBehaviour
         {
             ObservingPlayer = true;
         }
+        Question.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -108,6 +111,7 @@ public class PlayerPOVcam : MonoBehaviour
         {
             ObservingPlayer = false;
         }
+        Question.SetActive(false);
     }
 
 
@@ -141,6 +145,7 @@ public class PlayerPOVcam : MonoBehaviour
             waitTime *= 2;
             Debug.Log("Player noticed sabatogedList");
             FixingSabo = true;
+            Exclamation.SetActive(true);
         }
 
         time = 0;
@@ -155,6 +160,7 @@ public class PlayerPOVcam : MonoBehaviour
         if (FixingSabo)
         {
             GManager.sabotagedList.Remove(CurrentlyObserving);
+            Exclamation.SetActive(false);
         }
 
         Observing = false;
