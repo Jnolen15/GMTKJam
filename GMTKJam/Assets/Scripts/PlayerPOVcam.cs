@@ -30,11 +30,13 @@ public class PlayerPOVcam : MonoBehaviour
     private void Awake()
     {
         PlayerController.OnSabotage += SusOut;
+        PlayerController.OnActNormal += LowerSus;
     }
 
     private void OnDisable()
     {
         PlayerController.OnSabotage -= SusOut;
+        PlayerController.OnActNormal -= LowerSus;
     }
 
     void Start()
@@ -78,6 +80,12 @@ public class PlayerPOVcam : MonoBehaviour
             Debug.Log("Observing " + CurrentlyObserving.name);
             StartCoroutine(TimedObserve(CurrentlyObserving, Random.Range(MinObserveTime, MaxObserveTime)));
         }
+    }
+
+    // Lower Suspicion if player did something normal
+    public void LowerSus()
+    {
+        suspicion = 0;
     }
 
     // Lose Condition, Trigged bu full sus meter

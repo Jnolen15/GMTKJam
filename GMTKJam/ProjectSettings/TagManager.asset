@@ -45,3 +45,6 @@ TagManager:
   - name: PlayerCam
     uniqueID: 2582772307
     locked: 0
+  - name: CowUI
+    uniqueID: 2927719475
+    locked: 0
