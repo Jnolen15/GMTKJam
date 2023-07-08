@@ -7,7 +7,8 @@ public class PlayerPOVcam : MonoBehaviour
 {
     // ================= Variables =================
     [SerializeField] private List<GameObject> Locations;
-    [SerializeField] private bool Observing = false;
+    public bool Observing = false;
+    public bool FixingSabo = false;
     [SerializeField] private bool ObservingPlayer = false;
     [SerializeField] private GameObject CurrentlyObserving;
     [SerializeField] public float MinObserveTime;
@@ -124,7 +125,7 @@ public class PlayerPOVcam : MonoBehaviour
 
 
     // =============== LERP STUFF ===============
-    public void CameraLerp()
+    public void CameraLerp(GameObject obj1, GameObject obj2, float t)
     {
 
     }
@@ -146,12 +147,11 @@ public class PlayerPOVcam : MonoBehaviour
             yield return null;
         }
 
-        bool FixingSabo = false;
         if(GManager.sabotagedList.Contains(CurrentlyObserving))
         {
             // code for doing things when something is sabatoged go here
             waitTime *= 2;
-            Debug.Log("Player noticed sabatogedList");
+            Debug.Log("Observer noticed sabatogedList");
             FixingSabo = true;
             Exclamation.SetActive(true);
         }
