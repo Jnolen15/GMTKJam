@@ -4,24 +4,59 @@ using UnityEngine;
 
 public class PlayerPOVcam : MonoBehaviour
 {
+    // ================= Variables =================
     public List<GameObject> Locations;
     public bool Observing = false;
+    public bool ObservingPlayer = false;
     public GameObject CurrentlyObserving;
     public float MinObserveTime;
     public float MaxObserveTime;
     public float LookSpeed; // 0 - 1
-    private GameplayManager GManager;
     private int nombre;
+    [SerializeField] private float suspicion;
+    [SerializeField] private float maxSuspicion;
+    [SerializeField] private float suspicionGainRate;
 
-    // Start is called before the first frame update
+    // ================= Refrences =================
+    private GameplayManager GManager;
+
+    // ================= Setup =================
+    // Subscribe to player sabotage event
+    private void Awake()
+    {
+        PlayerController.OnSabotage += SusOut;
+    }
+
+    private void OnDisable()
+    {
+        PlayerController.OnSabotage -= SusOut;
+    }
+
     void Start()
     {
         GManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameplayManager>();
     }
 
-    // Update is called once per frame
+    // ================= Core Function =================
     void Update()
     {
+        if (GManager.GameOver)
+            return;
+
+        // Player Monitoring
+        if (ObservingPlayer)
+        {
+            if (suspicion < maxSuspicion)
+                suspicion += suspicionGainRate * Time.deltaTime;
+            else
+                SusOut();
+        } else
+        {
+            if(suspicion > 0)
+                suspicion -= suspicionGainRate * Time.deltaTime;
+        }
+
+        // Location Switching
         if(Observing)
         {
             
@@ -38,6 +73,32 @@ public class PlayerPOVcam : MonoBehaviour
         }
     }
 
+    // Lose Condition, Trigged bu full sus meter
+    // Or by witnessing the player sabotage something
+    private void SusOut()
+    {
+        Debug.Log("MAX SUS");
+        GManager.Lose();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            ObservingPlayer = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            ObservingPlayer = false;
+        }
+    }
+
+
+    // =============== LERP STUFF ===============
     public void CameraLerp()
     {
 
