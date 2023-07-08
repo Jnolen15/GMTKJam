@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class PlayerPOVcam : MonoBehaviour
 {
-
     public List<GameObject> Locations;
     public bool Observing = false;
     public GameObject CurrentlyObserving;
     public float MinObserveTime;
     public float MaxObserveTime;
     public float LookSpeed; // 0 - 1
-    private float TimeStamp;
     private int nombre;
 
     // Start is called before the first frame update
@@ -25,7 +23,7 @@ public class PlayerPOVcam : MonoBehaviour
     {
         if(Observing)
         {
-            // Observe(Locations[nombre], ObserveTime);
+            
         } else
         {
             int previousNombre = nombre;
@@ -33,27 +31,10 @@ public class PlayerPOVcam : MonoBehaviour
             {
                 nombre = Random.Range(0, 3);
             }
-            /*
-            if (!Observing)
-                Observing = true;
-                TimeStamp = Time.time;
-            */
             CurrentlyObserving = Locations[nombre];
             Debug.Log("Observing Nombre " + nombre);
             StartCoroutine(TimedObserve(CurrentlyObserving, Random.Range(MinObserveTime, MaxObserveTime)));
         }
-    }
-
-    public void Observe(GameObject obj, float time) // out of use, replaced by TimedObserve coroutine
-    {
-
-        // Debug.Log(TimeStamp + time);
-
-
-        this.transform.position = Vector3.Lerp(this.transform.position, obj.transform.position, 0.01f);
-        if (Time.time >= TimeStamp + time)
-            Observing = false;
-            // Debug.Log(TimeStamp);
     }
 
     public void CameraLerp()
@@ -87,6 +68,4 @@ public class PlayerPOVcam : MonoBehaviour
 
         Observing = false;
     }
-        
-
 }
