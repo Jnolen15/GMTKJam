@@ -10,12 +10,13 @@ public class PlayerPOVcam : MonoBehaviour
     public float MinObserveTime;
     public float MaxObserveTime;
     public float LookSpeed; // 0 - 1
+    private GameplayManager GManager;
     private int nombre;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        GManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameplayManager>();
     }
 
     // Update is called once per frame

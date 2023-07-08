@@ -38,7 +38,7 @@ public class FakeCursor : MonoBehaviour
 
     IEnumerator TimedClick(float x, float y, float ClickTime)
     {
-        // two parts, first lerps to obj, then a second, faster lerp to stick it to that obj
+        // two parts, first lerps to location, then stays still and "clicks" for some time
         Clicking = true;
         float time = 0;
         float MouseSpeed = Random.Range(MinMouseSpeed, MaxMouseSpeed);
