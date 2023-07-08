@@ -13,7 +13,8 @@ public class PlayerPOVcam : MonoBehaviour
     [SerializeField] private GameObject CurrentlyObserving;
     [SerializeField] public float MinObserveTime;
     [SerializeField] public float MaxObserveTime;
-    [SerializeField] private float LookSpeed; // 0 - 1
+    [SerializeField] private float LookSpeed;
+    [SerializeField] private float DistanceMultiplier; // increses the time looking takes based on distance
     private int nombre;
 
     [SerializeField] private float suspicion;
@@ -137,7 +138,8 @@ public class PlayerPOVcam : MonoBehaviour
         float time = 0;
         float waitTime = ObserveTime;
 
-        while(time < LookSpeed)
+        LookSpeed *= Vector3.Distance(this.transform.position, obj.transform.position) / DistanceMultiplier;
+        while (time < LookSpeed)
         {
             float t = time / LookSpeed;
             t = t * t * (3f - 2f * t);

@@ -436,11 +436,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Observing: 0
+  FixingSabo: 0
   ObservingPlayer: 0
   CurrentlyObserving: {fileID: 0}
   MinObserveTime: 2
   MaxObserveTime: 5
   LookSpeed: 1.5
+  DistanceMultiplier: 2
   suspicion: 0
   maxSuspicion: 10
   suspicionGainRate: 1
