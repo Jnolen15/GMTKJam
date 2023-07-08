@@ -9,8 +9,11 @@ public class PlayerController : MonoBehaviour
 
     // ================= Refrences =================
     [SerializeField] private SpriteRenderer sprite;
+    [SerializeField] private GameObject interactSprite;
     private Rigidbody2D rb;
     private Vector2 movement;
+
+    [SerializeField] private Interact interact;
 
 
     void Start()
@@ -29,11 +32,35 @@ public class PlayerController : MonoBehaviour
             sprite.flipX = true;
         else if (movement.x < -0.1)
             sprite.flipX = false;
+
+        // Interact
+        if (Input.GetKeyDown(KeyCode.E) && interact != null)
+        {
+            interact.InvokeEvent();
+        }
     }
 
     void FixedUpdate()
     {
         // Move the player
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Interactable")
+        {
+            interactSprite.SetActive(true);
+            interact = collision.GetComponent<Interact>();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(interact != null)
+        {
+            interactSprite.SetActive(false);
+            interact = null;
+        }
     }
 }
