@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Interact interact;
 
+    // ================= Events =================
+    public delegate void PlayerAction();
+    public static event PlayerAction OnSabotage;
 
     void Start()
     {
@@ -37,6 +40,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && interact != null)
         {
             interact.InvokeEvent();
+            OnSabotage();
         }
     }
 
