@@ -11,11 +11,12 @@ public class FakeCursor : MonoBehaviour
     public float MaxClickTime;
     public float MinMouseSpeed; // time that the mouse spends moving for each movement
     public float MaxMouseSpeed;
+    private GameplayManager GManager;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        GManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameplayManager>();
     }
 
     // Update is called once per frame
