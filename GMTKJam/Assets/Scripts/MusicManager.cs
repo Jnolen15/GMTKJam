@@ -26,7 +26,7 @@ public class MusicManager : MonoBehaviour
     void Update()
     {
         float chaos = Manager.sabotagedList.Count;
-        Debug.Log("Chaos lvl = " + chaos);
+        // Debug.Log("Chaos lvl = " + chaos);
         if (chaos < Track2Min)
         {
             Source2.volume = 0;
