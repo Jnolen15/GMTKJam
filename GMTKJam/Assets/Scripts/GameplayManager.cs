@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // ================= Variables =================
+    [SerializeField] private List<GameObject> sabotagedList = new();
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void AddToSabotagedList(GameObject obj)
+    {
+        if(!sabotagedList.Contains(obj))
+            sabotagedList.Add(obj);
     }
 }
