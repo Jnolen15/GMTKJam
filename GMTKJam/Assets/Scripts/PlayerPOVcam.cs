@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerPOVcam : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PlayerPOVcam : MonoBehaviour
 
     // ================= Refrences =================
     private GameplayManager GManager;
+    [SerializeField]
+    private Image susMeterImage;
 
     // ================= Setup =================
     // Subscribe to player sabotage event
@@ -56,8 +59,10 @@ public class PlayerPOVcam : MonoBehaviour
                 suspicion -= suspicionGainRate * Time.deltaTime;
         }
 
+        UpdateSusMeter();
+
         // Location Switching
-        if(Observing)
+        if (Observing)
         {
             
         } else
@@ -77,8 +82,16 @@ public class PlayerPOVcam : MonoBehaviour
     // Or by witnessing the player sabotage something
     private void SusOut()
     {
+        if (!ObservingPlayer)
+            return;
+
         Debug.Log("MAX SUS");
         GManager.Lose();
+    }
+
+    private void UpdateSusMeter()
+    {
+        susMeterImage.fillAmount = (suspicion / maxSuspicion);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -841,6 +841,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
+      propertyPath: susMeterImage
+      value: 
+      objectReference: {fileID: 1315664538}
+    - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
       propertyPath: Locations.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -976,6 +980,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4782083704159178910, guid: 0811ea74720d8de4b97cad48fdef77e2, type: 3}
   m_PrefabInstance: {fileID: 1315664536}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1315664538 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4316119263656852400, guid: 0811ea74720d8de4b97cad48fdef77e2, type: 3}
+  m_PrefabInstance: {fileID: 1315664536}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1315987973
 GameObject:
   m_ObjectHideFlags: 0
