@@ -20,6 +20,7 @@ public class PlayerPOVcam : MonoBehaviour
     [SerializeField] private float suspicion;
     [SerializeField] private float maxSuspicion;
     [SerializeField] private float suspicionGainRate;
+    private bool reverseSuspicion;
 
     // ================= Refrences =================
     private GameplayManager GManager;
@@ -55,10 +56,22 @@ public class PlayerPOVcam : MonoBehaviour
         // Player Monitoring
         if (ObservingPlayer)
         {
-            if (suspicion < maxSuspicion)
-                suspicion += suspicionGainRate * Time.deltaTime;
+            // Drop sus meter to 0 if cow was observed being normal
+            if (reverseSuspicion)
+            {
+                if (suspicion > 0)
+                    suspicion -= (suspicionGainRate * 1.5f) * Time.deltaTime;
+                else
+                    reverseSuspicion = false;
+            } 
+            // Raise sus meter
             else
-                SusOut();
+            {
+                if (suspicion < maxSuspicion)
+                    suspicion += suspicionGainRate * Time.deltaTime;
+                else
+                    SusOut();
+            }
         } else
         {
             if(suspicion > 0)
@@ -68,13 +81,10 @@ public class PlayerPOVcam : MonoBehaviour
         UpdateSusMeter();
 
         // Location Switching
-        if (Observing)
-        {
-            
-        } else
+        if (!Observing)
         {
             int previousNombre = nombre;
-            while(nombre == previousNombre) // prevents the same object from being observed twice
+            while (nombre == previousNombre) // prevents the same object from being observed twice
             {
                 nombre = Random.Range(0, Locations.Count);
             }
@@ -87,7 +97,7 @@ public class PlayerPOVcam : MonoBehaviour
     // Lower Suspicion if player did something normal
     public void LowerSus()
     {
-        suspicion = 0;
+        reverseSuspicion = true;
     }
 
     // Lose Condition, Trigged bu full sus meter
