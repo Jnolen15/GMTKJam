@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Image interactSprite;
     [SerializeField] private Image interactSpriteGhost;
     [SerializeField] private GameObject interactSpriteCDIndicator;
+    [SerializeField] private TextMeshProUGUI interactTitle;
     [SerializeField] private TextMeshProUGUI interactDescription;
     [SerializeField] private SpriteRenderer sprite;
     private Rigidbody2D rb;
@@ -90,14 +91,19 @@ public class PlayerController : MonoBehaviour
             interact = collision.GetComponent<Interact>();
             interactSprite.gameObject.SetActive(true);
             interactSpriteGhost.gameObject.SetActive(true);
+            interactTitle.gameObject.SetActive(true);
             interactDescription.gameObject.SetActive(true);
 
             if (interact.isSabotage)
             {
-                interactDescription.text = "Sabotage: " + interact.description;
+                interactDescription.text = interact.description;
+                interactTitle.text = "Sabotage";
+                interactTitle.color = Color.red;
                 interactDescription.color = Color.red;
             } else {
-                interactDescription.text = "Act Natural: " + interact.description;
+                interactDescription.text = interact.description;
+                interactTitle.text = "Act Natural";
+                interactTitle.color = Color.green;
                 interactDescription.color = Color.green;
             }
 
@@ -116,6 +122,7 @@ public class PlayerController : MonoBehaviour
             interactSprite.gameObject.SetActive(false);
             interactSpriteGhost.gameObject.SetActive(false);
             interactSpriteCDIndicator.SetActive(false);
+            interactTitle.gameObject.SetActive(false);
             interactDescription.gameObject.SetActive(false);
             interact = null;
             curInteract = 0;
