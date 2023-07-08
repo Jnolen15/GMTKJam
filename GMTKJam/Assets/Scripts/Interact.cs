@@ -13,6 +13,9 @@ public class Interact : MonoBehaviour
     [SerializeField] private float cd;
     public bool onCD;
 
+    [TextArea]
+    public string description;
+
     // ================= Refrences =================
     [SerializeField] private UnityEvent interactableEvent;
 
