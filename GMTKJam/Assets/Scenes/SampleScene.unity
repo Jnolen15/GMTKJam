@@ -325,6 +325,7 @@ MonoBehaviour:
   cdTime: 5
   cd: 0
   onCD: 0
+  description: Commit Arson
   interactableEvent:
     m_PersistentCalls:
       m_Calls:
@@ -375,6 +376,7 @@ MonoBehaviour:
   cdTime: 5
   cd: 0
   onCD: 0
+  description: Look at tree
   interactableEvent:
     m_PersistentCalls:
       m_Calls:
@@ -834,6 +836,7 @@ MonoBehaviour:
   cdTime: 5
   cd: 0
   onCD: 0
+  description: Vandalize
   interactableEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1378,6 +1381,7 @@ MonoBehaviour:
   cdTime: 5
   cd: 0
   onCD: 0
+  description: Plant Explosives
   interactableEvent:
     m_PersistentCalls:
       m_Calls:

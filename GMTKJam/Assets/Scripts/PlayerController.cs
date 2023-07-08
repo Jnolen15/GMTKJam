@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Image interactSprite;
     [SerializeField] private Image interactSpriteGhost;
     [SerializeField] private GameObject interactSpriteCDIndicator;
+    [SerializeField] private TextMeshProUGUI interactDescription;
     [SerializeField] private SpriteRenderer sprite;
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -85,9 +87,20 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Interactable")
         {
+            interact = collision.GetComponent<Interact>();
             interactSprite.gameObject.SetActive(true);
             interactSpriteGhost.gameObject.SetActive(true);
-            interact = collision.GetComponent<Interact>();
+            interactDescription.gameObject.SetActive(true);
+
+            if (interact.isSabotage)
+            {
+                interactDescription.text = "Sabotage: " + interact.description;
+                interactDescription.color = Color.red;
+            } else {
+                interactDescription.text = "Act Natural: " + interact.description;
+                interactDescription.color = Color.green;
+            }
+
             curInteract = 0;
             interactSprite.fillAmount = 0;
         }
@@ -103,6 +116,7 @@ public class PlayerController : MonoBehaviour
             interactSprite.gameObject.SetActive(false);
             interactSpriteGhost.gameObject.SetActive(false);
             interactSpriteCDIndicator.SetActive(false);
+            interactDescription.gameObject.SetActive(false);
             interact = null;
             curInteract = 0;
             interactSprite.fillAmount = 0;
