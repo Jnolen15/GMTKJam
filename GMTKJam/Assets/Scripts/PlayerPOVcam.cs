@@ -70,10 +70,10 @@ public class PlayerPOVcam : MonoBehaviour
             int previousNombre = nombre;
             while(nombre == previousNombre) // prevents the same object from being observed twice
             {
-                nombre = Random.Range(0, 3);
+                nombre = Random.Range(0, Locations.Count);
             }
             CurrentlyObserving = Locations[nombre];
-            Debug.Log("Observing Nombre " + nombre);
+            Debug.Log("Observing " + CurrentlyObserving.name);
             StartCoroutine(TimedObserve(CurrentlyObserving, Random.Range(MinObserveTime, MaxObserveTime)));
         }
     }
@@ -134,11 +134,13 @@ public class PlayerPOVcam : MonoBehaviour
             yield return null;
         }
 
+        bool FixingSabo = false;
         if(GManager.sabotagedList.Contains(CurrentlyObserving))
         {
             // code for doing things when something is sabatoged go here
             waitTime *= 2;
             Debug.Log("Player noticed sabatogedList");
+            FixingSabo = true;
         }
 
         time = 0;
@@ -148,6 +150,11 @@ public class PlayerPOVcam : MonoBehaviour
 
             time += Time.deltaTime;
             yield return null;
+        }
+
+        if (FixingSabo)
+        {
+            GManager.sabotagedList.Remove(CurrentlyObserving);
         }
 
         Observing = false;
