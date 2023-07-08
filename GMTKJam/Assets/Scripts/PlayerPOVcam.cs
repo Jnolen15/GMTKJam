@@ -48,6 +48,7 @@ public class PlayerPOVcam : MonoBehaviour
         // two parts, first lerps to obj, then a second, faster lerp to stick it to that obj
         Observing = true;
         float time = 0;
+        float waitTime = ObserveTime;
 
         while(time < LookSpeed)
         {
@@ -59,7 +60,14 @@ public class PlayerPOVcam : MonoBehaviour
             yield return null;
         }
 
-        while (time < ObserveTime)
+        if(Locations.Contains(CurrentlyObserving))
+        {
+            // code for doing things when something is sabatoged go here
+            waitTime *= 2;
+        }
+
+        time = 0;
+        while (time < waitTime)
         {
             this.transform.position = Vector3.Lerp(this.transform.position, obj.transform.position, 1);
 
