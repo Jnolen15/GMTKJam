@@ -179,6 +179,11 @@ public class PlayerPOVcam : MonoBehaviour
 
         if (FixingSabo)
         {
+            if (CurrentlyObserving.GetComponent<Interact>() != null)
+                CurrentlyObserving.GetComponent<Interact>().onCD = false;
+
+            Debug.Log("Fixed: " + CurrentlyObserving.name);
+
             GManager.sabotagedList.Remove(CurrentlyObserving);
             Exclamation.SetActive(false);
         }

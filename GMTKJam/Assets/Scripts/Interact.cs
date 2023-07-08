@@ -35,7 +35,7 @@ public class Interact : MonoBehaviour
 
     private void Update()
     {
-        if (!onCD)
+        if (!onCD || isSabotage)
             return;
 
         if (cd < cdTime)
