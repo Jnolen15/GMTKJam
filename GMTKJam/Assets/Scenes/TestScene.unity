@@ -488,8 +488,9 @@ MonoBehaviour:
   - {fileID: 90225846}
   - {fileID: 1857610713}
   Observing: 0
-  ObserveTime: 3
-  LerpFloat: 0.01
+  ObserveTime: 4
+  LookSpeed: 1
+  CurrentlyObserving: {fileID: 0}
 --- !u!1 &826195161
 GameObject:
   m_ObjectHideFlags: 0
