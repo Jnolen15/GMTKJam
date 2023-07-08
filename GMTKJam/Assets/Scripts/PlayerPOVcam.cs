@@ -121,10 +121,11 @@ public class PlayerPOVcam : MonoBehaviour
             yield return null;
         }
 
-        if(Locations.Contains(CurrentlyObserving))
+        if(GManager.sabotagedList.Contains(CurrentlyObserving))
         {
             // code for doing things when something is sabatoged go here
             waitTime *= 2;
+            Debug.Log("Player noticed sabatogedList");
         }
 
         time = 0;
