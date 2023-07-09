@@ -5033,7 +5033,7 @@ MonoBehaviour:
   cdTime: 5
   cd: 0
   onCD: 0
-  description: Start Chiken Rebellion
+  description: Start Chicken Rebellion
   ScoreVal: 250
   interactableEvent:
     m_PersistentCalls:
