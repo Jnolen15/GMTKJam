@@ -16,9 +16,9 @@ public class VolumeSlider : MonoBehaviour
     private void Start()
     {
         float vol = PlayerPrefs.GetFloat("Volume", StartingVolume);
-        Slider.onValueChanged.AddListener(ValueChanged);
-        MasterVolume.SetFloat(VolumeParamater, Mathf.Log10(vol) * 30f);
         Slider.value = vol;
+        MasterVolume.SetFloat(VolumeParamater, Mathf.Log10(vol) * 30f);
+        Slider.onValueChanged.AddListener(ValueChanged);
     }
     private void ValueChanged(float value)
     {
