@@ -49,6 +49,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndScreen: {fileID: 0}
+  ScoreText: {fileID: 0}
+  ComboText: {fileID: 0}
+  Score: 0
+  Combo: 0
+  MultiplierVal: 0
   sabotagedList: []
   GameOver: 0
 --- !u!114 &4330435775471784770
@@ -67,7 +72,7 @@ MonoBehaviour:
   Source2: {fileID: 576722765300303431}
   Source3: {fileID: 5216506992915154963}
   Mixer: {fileID: 24100000, guid: 5d91814980cffa54b99cf2d4827af937, type: 2}
-  Track2Min: 2
+  Track2Min: 1
   TrackDepth: 3
 --- !u!1 &8197720912743322234
 GameObject:
@@ -111,7 +116,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7726484886197366757, guid: 5d91814980cffa54b99cf2d4827af937, type: 2}
-  m_audioClip: {fileID: 8300000, guid: a426c6bd0588dbb4cbf0693e84fbf3de, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1d4f2035e84689845b00adc7dcc55d76, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -239,7 +244,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7726484886197366757, guid: 5d91814980cffa54b99cf2d4827af937, type: 2}
-  m_audioClip: {fileID: 8300000, guid: a426c6bd0588dbb4cbf0693e84fbf3de, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8e8b8ba42a1d17e44b0f65d06da658e0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -367,7 +372,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7726484886197366757, guid: 5d91814980cffa54b99cf2d4827af937, type: 2}
-  m_audioClip: {fileID: 8300000, guid: a426c6bd0588dbb4cbf0693e84fbf3de, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c3b5902bb35057e46be083b4976ff7e8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
