@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject interactSpriteCDIndicator;
     [SerializeField] private TextMeshProUGUI interactTitle;
     [SerializeField] private TextMeshProUGUI interactDescription;
+    [SerializeField] private GameObject textBG;
     [SerializeField] private SpriteRenderer sprite;
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -133,6 +134,7 @@ public class PlayerController : MonoBehaviour
             interactSpriteGhost.gameObject.SetActive(true);
             interactTitle.gameObject.SetActive(true);
             interactDescription.gameObject.SetActive(true);
+            textBG.gameObject.SetActive(true);
 
             if (interact.isSabotage)
             {
@@ -164,6 +166,7 @@ public class PlayerController : MonoBehaviour
             interactSpriteCDIndicator.SetActive(false);
             interactTitle.gameObject.SetActive(false);
             interactDescription.gameObject.SetActive(false);
+            textBG.gameObject.SetActive(false);
             interact = null;
             curInteract = 0;
             interactSprite.fillAmount = 0;
