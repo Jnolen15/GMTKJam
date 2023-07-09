@@ -4113,7 +4113,7 @@ PrefabInstance:
       objectReference: {fileID: 1315664538}
     - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
       propertyPath: DistanceMultiplier
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
       propertyPath: Locations.Array.size

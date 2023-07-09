@@ -55,28 +55,24 @@ public class PlayerPOVcam : MonoBehaviour
             return;
 
         // Player Monitoring
-        if (ObservingPlayer)
+        // Drop sus meter to 0 if cow was observed being normal
+        if (reverseSuspicion)
         {
-            // Drop sus meter to 0 if cow was observed being normal
-            if (reverseSuspicion)
-            {
-                if (suspicion > 0)
-                    suspicion -= (suspicionGainRate * 1.5f) * Time.deltaTime;
-                else
-                    reverseSuspicion = false;
-            } 
-            // Raise sus meter
+            if (suspicion > 0)
+                suspicion -= (suspicionGainRate * 1.5f) * Time.deltaTime;
             else
-            {
-                if (suspicion < maxSuspicion)
-                    suspicion += suspicionGainRate * Time.deltaTime;
-                else
-                    SusOut();
-            }
+                reverseSuspicion = false;
+        }
+        else if (ObservingPlayer)
+        {
+            if (suspicion < maxSuspicion)
+                suspicion += suspicionGainRate * Time.deltaTime;
+            else
+                SusOut();
         } else
         {
-            if(suspicion > 0)
-                suspicion -= suspicionGainRate * Time.deltaTime;
+            //if(suspicion > 0)
+            //    suspicion -= suspicionGainRate * Time.deltaTime;
         }
 
         UpdateSusMeter();
@@ -177,6 +173,7 @@ public class PlayerPOVcam : MonoBehaviour
             Debug.Log("Observer noticed sabatogedList");
             FixingSabo = true;
             Exclamation.SetActive(true);
+            suspicion += 2;
         }
 
         time = 0;

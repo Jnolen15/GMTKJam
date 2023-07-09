@@ -46,7 +46,7 @@ public class GameplayManager : MonoBehaviour
         else if (Combo == 6)
             MultiplierVal = 2f;
 
-        ComboText.text = Combo.ToString();
+        ComboText.text = Combo.ToString() + "X";
     }
 
     public void Lose()
