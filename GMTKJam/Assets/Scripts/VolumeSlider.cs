@@ -6,20 +6,23 @@ using UnityEngine.UI;
 
 public class VolumeSlider : MonoBehaviour
 {
-    public float StartingVolume;
-    public AudioMixer MasterVolume;
-    public Slider Slider;
-    public string VolumeParamater;
-    
+    [SerializeField] private float StartingVolume;
+    [SerializeField] private AudioMixer MasterVolume;
+    [SerializeField] private Slider Slider;
+    [SerializeField] private string VolumeParamater;
+    private AudioSource Source;
 
-    private void Awake()
+
+    private void Start()
     {
+        float vol = PlayerPrefs.GetFloat("Volume", StartingVolume);
         Slider.onValueChanged.AddListener(ValueChanged);
-        ValueChanged(StartingVolume);
+        MasterVolume.SetFloat(VolumeParamater, Mathf.Log10(vol) * 30f);
+        Slider.value = vol;
     }
     private void ValueChanged(float value)
     {
+        PlayerPrefs.SetFloat("Volume", value);
         MasterVolume.SetFloat(VolumeParamater, Mathf.Log10(value) * 30f);
     }
-
 }
