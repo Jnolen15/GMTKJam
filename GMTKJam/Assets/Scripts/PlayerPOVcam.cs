@@ -25,6 +25,7 @@ public class PlayerPOVcam : MonoBehaviour
 
     // ================= Refrences =================
     private GameplayManager GManager;
+    private VOManager voManager;
     [SerializeField] private Image susMeterImage;
     [SerializeField] private GameObject Exclamation;
     [SerializeField] private GameObject Question;
@@ -46,6 +47,7 @@ public class PlayerPOVcam : MonoBehaviour
     void Start()
     {
         GManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameplayManager>();
+        voManager = this.GetComponent<VOManager>();
     }
 
     // ================= Core Function =================
@@ -85,6 +87,7 @@ public class PlayerPOVcam : MonoBehaviour
             {
                 CurrentlyObserving = Player;
                 lookToPlayerCountdown = Random.Range(2, 4);
+                voManager.PlayCowSus();
             }
             // Pick random building
             else
@@ -96,6 +99,7 @@ public class PlayerPOVcam : MonoBehaviour
                 }
                 CurrentlyObserving = Locations[nombre];
                 lookToPlayerCountdown--;
+                voManager.PlayCameraMove();
             }
 
             // Change view
@@ -108,6 +112,7 @@ public class PlayerPOVcam : MonoBehaviour
     public void LowerSus()
     {
         reverseSuspicion = true;
+        voManager.PlayNormal();
     }
 
     // Lose Condition, Trigged bu full sus meter
@@ -118,6 +123,7 @@ public class PlayerPOVcam : MonoBehaviour
             return;
 
         Debug.Log("MAX SUS");
+        voManager.PlayFoundOut();
         GManager.Lose();
     }
 
@@ -174,6 +180,7 @@ public class PlayerPOVcam : MonoBehaviour
             FixingSabo = true;
             Exclamation.SetActive(true);
             suspicion += 2;
+            voManager.PlaySabotaged();
         }
 
         time = 0;
