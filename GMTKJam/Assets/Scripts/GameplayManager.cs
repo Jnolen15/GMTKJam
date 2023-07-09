@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameplayManager : MonoBehaviour
 {
     // ================= Variables =================
     [SerializeField] private GameObject EndScreen;
+    [SerializeField] private TextMeshProUGUI finalScore;
     [SerializeField] private TextMeshProUGUI ScoreText;
     [SerializeField] private TextMeshProUGUI ComboText;
     [SerializeField] private int Score;
@@ -52,14 +54,14 @@ public class GameplayManager : MonoBehaviour
     public void Lose()
     {
         GameOver = true;
+        finalScore.text = "Final Score: " + Score;
         EndScreen.SetActive(true);
         Time.timeScale = 0;
     }
 
-    public void Win()
+    public void Restart()
     {
-        GameOver = true;
-        EndScreen.SetActive(true);
-        Time.timeScale = 0;
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

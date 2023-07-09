@@ -4628,6 +4628,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6940203177134283828, guid: 0811ea74720d8de4b97cad48fdef77e2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940203177134283828, guid: 0811ea74720d8de4b97cad48fdef77e2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940203177134283828, guid: 0811ea74720d8de4b97cad48fdef77e2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1982922271}
+    - target: {fileID: 6940203177134283828, guid: 0811ea74720d8de4b97cad48fdef77e2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940203177134283828, guid: 0811ea74720d8de4b97cad48fdef77e2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940203177134283828, guid: 0811ea74720d8de4b97cad48fdef77e2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameplayManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940203177134283828, guid: 0811ea74720d8de4b97cad48fdef77e2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0811ea74720d8de4b97cad48fdef77e2, type: 3}
 --- !u!1 &1315664537 stripped
@@ -4660,6 +4688,17 @@ MonoBehaviour:
 --- !u!114 &1315664540 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8559297695405374070, guid: 0811ea74720d8de4b97cad48fdef77e2, type: 3}
+  m_PrefabInstance: {fileID: 1315664536}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1315664541 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3374902794413879014, guid: 0811ea74720d8de4b97cad48fdef77e2, type: 3}
   m_PrefabInstance: {fileID: 1315664536}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -7900,5 +7939,9 @@ PrefabInstance:
       propertyPath: ScoreText
       value: 
       objectReference: {fileID: 1315664540}
+    - target: {fileID: 3569185043884150871, guid: fd6d36c3b2c41b64584611f9fdfe3f00, type: 3}
+      propertyPath: finalScore
+      value: 
+      objectReference: {fileID: 1315664541}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd6d36c3b2c41b64584611f9fdfe3f00, type: 3}
