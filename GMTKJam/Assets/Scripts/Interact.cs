@@ -16,6 +16,8 @@ public class Interact : MonoBehaviour
     [TextArea]
     public string description;
 
+    public int ScoreVal;
+
     // ================= Refrences =================
     [SerializeField] private UnityEvent interactableEvent;
     [SerializeField] private UnityEvent eventReset;

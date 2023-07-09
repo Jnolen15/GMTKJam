@@ -318,6 +318,7 @@ MonoBehaviour:
   cd: 0
   onCD: 0
   description: Eat Hay
+  ScoreVal: 20
   interactableEvent:
     m_PersistentCalls:
       m_Calls:
@@ -491,6 +492,7 @@ MonoBehaviour:
   cd: 0
   onCD: 0
   description: Commit Arson
+  ScoreVal: 100
   interactableEvent:
     m_PersistentCalls:
       m_Calls:
@@ -593,6 +595,7 @@ MonoBehaviour:
   cd: 0
   onCD: 0
   description: Look at tree
+  ScoreVal: 20
   interactableEvent:
     m_PersistentCalls:
       m_Calls:
@@ -11043,6 +11046,7 @@ MonoBehaviour:
   cd: 0
   onCD: 0
   description: Incite Horse Riot
+  ScoreVal: 100
   interactableEvent:
     m_PersistentCalls:
       m_Calls:
@@ -11621,6 +11625,7 @@ MonoBehaviour:
   cd: 0
   onCD: 0
   description: Start Chiken Rebellion
+  ScoreVal: 100
   interactableEvent:
     m_PersistentCalls:
       m_Calls:
@@ -12174,6 +12179,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1315664539 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 567803802612370427, guid: 0811ea74720d8de4b97cad48fdef77e2, type: 3}
+  m_PrefabInstance: {fileID: 1315664536}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1315664540 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8559297695405374070, guid: 0811ea74720d8de4b97cad48fdef77e2, type: 3}
+  m_PrefabInstance: {fileID: 1315664536}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1315987973
 GameObject:
   m_ObjectHideFlags: 0
@@ -12460,6 +12487,7 @@ MonoBehaviour:
   cd: 0
   onCD: 0
   description: Plant Explosives
+  ScoreVal: 100
   interactableEvent:
     m_PersistentCalls:
       m_Calls:
@@ -17944,8 +17972,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3569185043884150871, guid: fd6d36c3b2c41b64584611f9fdfe3f00, type: 3}
+      propertyPath: ComboText
+      value: 
+      objectReference: {fileID: 1315664539}
+    - target: {fileID: 3569185043884150871, guid: fd6d36c3b2c41b64584611f9fdfe3f00, type: 3}
       propertyPath: EndScreen
       value: 
       objectReference: {fileID: 1315664537}
+    - target: {fileID: 3569185043884150871, guid: fd6d36c3b2c41b64584611f9fdfe3f00, type: 3}
+      propertyPath: ScoreText
+      value: 
+      objectReference: {fileID: 1315664540}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd6d36c3b2c41b64584611f9fdfe3f00, type: 3}

@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer sprite;
     private Rigidbody2D rb;
     private Vector2 movement;
-
+    private GameplayManager gManager;
     [SerializeField] private Interact interact;
 
     // ================= Events =================
@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        gManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameplayManager>();
     }
 
     void Update()
@@ -59,9 +60,16 @@ public class PlayerController : MonoBehaviour
                 interact.InvokeEvent();
 
                 if (interact.isSabotage)
+                {
                     OnSabotage();
+                    gManager.AddMultiplier(1);
+                    gManager.AddScore(interact.ScoreVal);
+                }
                 else
+                {
                     OnActNormal();
+                    gManager.AddScore(interact.ScoreVal);
+                }
 
                 curInteract = 0;
                 interactSprite.fillAmount = 0;
