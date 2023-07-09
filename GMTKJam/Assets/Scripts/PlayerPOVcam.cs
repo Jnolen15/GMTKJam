@@ -162,7 +162,7 @@ public class PlayerPOVcam : MonoBehaviour
         if(GManager.sabotagedList.Contains(CurrentlyObserving))
         {
             // code for doing things when something is sabatoged go here
-            waitTime *= 2;
+            // waitTime *= 2;
             Debug.Log("Observer noticed sabatogedList");
             FixingSabo = true;
             Exclamation.SetActive(true);

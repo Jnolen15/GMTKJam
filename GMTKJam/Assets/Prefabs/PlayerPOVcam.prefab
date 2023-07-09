@@ -352,9 +352,9 @@ MonoBehaviour:
   Clicking: 0
   MaxX: 4.5
   MaxY: 3
-  MinClickTime: 0.5
-  MaxClickTime: 1
-  MinMouseSpeed: 2
+  MinClickTime: 0.2
+  MaxClickTime: 0.5
+  MinMouseSpeed: 1
   MaxMouseSpeed: 2
 --- !u!1 &2529130964679655123
 GameObject:
