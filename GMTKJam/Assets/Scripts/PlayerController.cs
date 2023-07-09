@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private GameplayManager gManager;
     [SerializeField] private Interact interact;
+    [SerializeField] private bool isAnimating;
 
     // ================= Events =================
     public delegate void PlayerAction();
@@ -38,6 +40,18 @@ public class PlayerController : MonoBehaviour
         // Calulate movement
         movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         movement.Normalize();
+
+        // Animation
+        if (Mathf.Abs(movement.x) > 0 || Mathf.Abs(movement.y) > 0)
+        {
+            StartAnimate();
+            isAnimating = true;
+        }
+        else
+        {
+            EndAnimate();
+            isAnimating = false;
+        }
 
         // Flip sprite
         if (movement.x > 0.1)
@@ -90,6 +104,24 @@ public class PlayerController : MonoBehaviour
     {
         // Move the player
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    private void StartAnimate()
+    {
+        if (isAnimating)
+            return;
+
+        // Animate
+        sprite.transform.rotation = Quaternion.Euler(0, 0, -5);
+        sprite.transform.localPosition = Vector3.zero;
+        sprite.transform.DOLocalJump(sprite.transform.localPosition, 0.2f, 1, 0.6f).SetLoops(-1, LoopType.Restart).SetEase(Ease.InOutSine);
+        sprite.transform.DORotate(new Vector3(0, 0, 10), 0.6f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+    }
+
+    private void EndAnimate()
+    {
+        sprite.transform.DOKill();
+        sprite.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
