@@ -111,6 +111,9 @@ public class PlayerPOVcam : MonoBehaviour
     // Lower Suspicion if player did something normal
     public void LowerSus()
     {
+        if (!ObservingPlayer)
+            return;
+
         reverseSuspicion = true;
         voManager.PlayNormal();
     }
