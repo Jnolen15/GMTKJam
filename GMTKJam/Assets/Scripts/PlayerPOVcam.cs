@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerPOVcam : MonoBehaviour
 {
     // ================= Variables =================
+    [SerializeField] private GameObject Player;
     [SerializeField] private List<GameObject> Locations;
     public bool Observing = false;
     public bool FixingSabo = false;
@@ -16,7 +17,7 @@ public class PlayerPOVcam : MonoBehaviour
     [SerializeField] private float LookSpeed;
     [SerializeField] private float DistanceMultiplier; // increses the time looking takes based on distance
     private int nombre;
-
+    [SerializeField] private int lookToPlayerCountdown;
     [SerializeField] private float suspicion;
     [SerializeField] private float maxSuspicion;
     [SerializeField] private float suspicionGainRate;
@@ -83,12 +84,25 @@ public class PlayerPOVcam : MonoBehaviour
         // Location Switching
         if (!Observing)
         {
-            int previousNombre = nombre;
-            while (nombre == previousNombre) // prevents the same object from being observed twice
+            // Pick Player
+            if (lookToPlayerCountdown == 0)
             {
-                nombre = Random.Range(0, Locations.Count);
+                CurrentlyObserving = Player;
+                lookToPlayerCountdown = Random.Range(2, 4);
             }
-            CurrentlyObserving = Locations[nombre];
+            // Pick random building
+            else
+            {
+                int previousNombre = nombre;
+                while (nombre == previousNombre) // prevents the same object from being observed twice
+                {
+                    nombre = Random.Range(0, Locations.Count);
+                }
+                CurrentlyObserving = Locations[nombre];
+                lookToPlayerCountdown--;
+            }
+
+            // Change view
             Debug.Log("Observing " + CurrentlyObserving.name);
             StartCoroutine(TimedObserve(CurrentlyObserving, Random.Range(MinObserveTime, MaxObserveTime)));
         }
@@ -136,30 +150,27 @@ public class PlayerPOVcam : MonoBehaviour
 
 
     // =============== LERP STUFF ===============
-    public void CameraLerp(GameObject obj1, GameObject obj2, float t)
-    {
-
-    }
-
     IEnumerator TimedObserve(GameObject obj, float ObserveTime)
     {
         // two parts, first lerps to obj, then a second, faster lerp to stick it to that obj
         Observing = true;
         float time = 0;
-        float waitTime = ObserveTime;
 
-        LookSpeed *= Vector3.Distance(this.transform.position, obj.transform.position) / DistanceMultiplier;
+        LookSpeed = Vector3.Distance(this.transform.position, obj.transform.position) / DistanceMultiplier;
+        Debug.Log("Look Speed " + LookSpeed);
+        Vector3 startPosition = transform.position;
         while (time < LookSpeed)
         {
             float t = time / LookSpeed;
             t = t * t * (3f - 2f * t);
-            this.transform.position = Vector3.Lerp(this.transform.position, obj.transform.position, t);
+            transform.position = Vector3.Lerp(startPosition, obj.transform.position, t);
 
             time += Time.deltaTime;
             yield return null;
         }
+        transform.position = obj.transform.position;
 
-        if(GManager.sabotagedList.Contains(CurrentlyObserving))
+        if (GManager.sabotagedList.Contains(CurrentlyObserving))
         {
             // code for doing things when something is sabatoged go here
             // waitTime *= 2;
@@ -169,7 +180,8 @@ public class PlayerPOVcam : MonoBehaviour
         }
 
         time = 0;
-        while (time < waitTime)
+        Debug.Log("Waiting for " + ObserveTime);
+        while (time < ObserveTime)
         {
             this.transform.position = Vector3.Lerp(this.transform.position, obj.transform.position, 1);
 

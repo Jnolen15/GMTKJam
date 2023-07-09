@@ -4104,45 +4104,53 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1686712334}
+    - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
       propertyPath: susMeterImage
       value: 
       objectReference: {fileID: 1315664538}
     - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
+      propertyPath: DistanceMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
       propertyPath: Locations.Array.size
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
       propertyPath: Locations.Array.data[0]
       value: 
-      objectReference: {fileID: 1686712334}
+      objectReference: {fileID: 1674907130}
     - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
       propertyPath: Locations.Array.data[1]
       value: 
-      objectReference: {fileID: 1674907130}
+      objectReference: {fileID: 2016140846}
     - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
       propertyPath: Locations.Array.data[2]
       value: 
-      objectReference: {fileID: 2016140846}
+      objectReference: {fileID: 1687214818}
     - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
       propertyPath: Locations.Array.data[3]
       value: 
-      objectReference: {fileID: 1687214818}
+      objectReference: {fileID: 448490091}
     - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
       propertyPath: Locations.Array.data[4]
       value: 
-      objectReference: {fileID: 448490091}
+      objectReference: {fileID: 1974689754}
     - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
       propertyPath: Locations.Array.data[5]
       value: 
-      objectReference: {fileID: 1974689754}
+      objectReference: {fileID: 412561613}
     - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
       propertyPath: Locations.Array.data[6]
       value: 
-      objectReference: {fileID: 412561613}
+      objectReference: {fileID: 1454216773}
     - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
       propertyPath: Locations.Array.data[7]
       value: 
-      objectReference: {fileID: 1454216773}
+      objectReference: {fileID: 72448374}
     - target: {fileID: 2529130964679655117, guid: 45867a5db6385dc4eb2e73d13d095a98, type: 3}
       propertyPath: Locations.Array.data[8]
       value: 
