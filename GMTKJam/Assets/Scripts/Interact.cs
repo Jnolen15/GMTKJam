@@ -18,6 +18,7 @@ public class Interact : MonoBehaviour
 
     // ================= Refrences =================
     [SerializeField] private UnityEvent interactableEvent;
+    [SerializeField] private UnityEvent eventReset;
 
     public void InvokeEvent()
     {
@@ -42,5 +43,11 @@ public class Interact : MonoBehaviour
             cd += Time.deltaTime * 1;
         else
             onCD = false;
+    }
+
+    public void ResetInteractable()
+    {
+        onCD = false;
+        eventReset.Invoke();
     }
 }

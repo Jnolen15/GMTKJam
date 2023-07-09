@@ -180,7 +180,7 @@ public class PlayerPOVcam : MonoBehaviour
         if (FixingSabo)
         {
             if (CurrentlyObserving.GetComponent<Interact>() != null)
-                CurrentlyObserving.GetComponent<Interact>().onCD = false;
+                CurrentlyObserving.GetComponent<Interact>().ResetInteractable();
 
             Debug.Log("Fixed: " + CurrentlyObserving.name);
 

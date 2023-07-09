@@ -42,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: sabotage
+    uniqueID: 3288560595
+    locked: 0
   - name: PlayerCam
     uniqueID: 2582772307
     locked: 0
